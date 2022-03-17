@@ -6,9 +6,14 @@ export default function App() {
 
   
   const [valor, setValor] = useState('');
- 
+  const [resultado, setResultado] = useState('')
+
   const guardar = (e) =>{
     setValor(e.target.value)
+  }
+
+  const Mostrar = () =>{
+    setResultado(valor)
   }
 
 
@@ -16,12 +21,14 @@ export default function App() {
     
     <View style={styles.container}>
       <ImageBackground source={require("./img/comida.jpg")} resizeMode="cover" style={styles.image}>
-      <View>
-        <Image source={require('./img/comida2.png')}  resizeMode="" style={styles.image2}/>
-      </View>
-        <h1>{valor}</h1>        
-        <TextInput style={styles.input} placeholder="Ex: coxinha" onChange={(guardar)}/>
-        <Button title="Confirmar" onPress={() => setValor(valor)} ></Button>
+        <View style={styles.fundo}>
+        <h1>{resultado}</h1> 
+          <View>
+              <Image source={require('./img/comida2.png')}  resizeMode="" style={styles.image2}/>
+          </View>       
+          <TextInput style={styles.input} placeholder="Ex: coxinha" onChange={(guardar)}/>
+          <Button title="Confirmar" onPress={Mostrar} ></Button>
+        </View>
       </ImageBackground>
     </View>
   );
@@ -47,7 +54,8 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
     resizeMode: 'stretch',
-    borderRadius: 500  
+    borderRadius: 500,
+    margin: 20  
   },
   input: {
     height: 40,
@@ -56,5 +64,14 @@ const styles = StyleSheet.create({
     margin: 12,
     borderWidth: 1,
     padding: 10,
-  }
+  },
+  fundo:{
+    backgroundColor:'#836FFF',
+    height: '50%',
+    width: '15%',
+    padding: '30',
+    alignItems: 'center',
+    opacity:'90%'
+  },
+
 });
